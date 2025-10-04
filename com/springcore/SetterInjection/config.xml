@@ -11,8 +11,16 @@
     <!--Three Ways to Configure Setter Injection in XML 1. Using <property> Tag (Verbose Way)-->
     <!-- student bean -->
     <bean class="com.springcore.SetterInjection.student" name="student1">
-        <property name="studentName"><value>"Ram Das"</value></property>
+        <property name="studentName"><value>Ram Das</value></property>
         <property name="studentRollNo"><value>121</value></property>
     </bean>
-	
+
+    <!-- 2. for self closing property tag -->
+    <bean class="com.springcore.SetterInjection.student" name="student2">
+        <property name="studentName" value="Shyam Sundar"/>
+        <property name="studentRollNo" value="122"/>
+    </bean>
+
+    <!-- 3. Using p-namespace (Most Recommended Way) -->
+    <bean class="com.springcore.SetterInjection.student" name="student3" p:studentName="Krishna" p:studentRollNo="123"/>
 </beans>
