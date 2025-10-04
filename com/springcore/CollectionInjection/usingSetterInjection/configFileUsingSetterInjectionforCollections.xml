@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Employee with Collections using Setter Injection -->
+    <bean class="com.springcore.CollectionInjection.usingSetterInjection.employeeCollectionClass" name="emp1">
+        
+        <!-- Simple property -->
+        <property name="empName" value="Ganesh Ramavat"/>
+        
+        <!-- List injection -->
+        <property name="phones">
+            <list>
+                <value>9876543210</value>
+                <value>8765432109</value>
+                <value>7654321098</value>
+                <value>9876543210</value> <!-- Duplicates allowed in List -->
+            </list>
+        </property>
+        
+        <!-- Set injection -->
+        <property name="addresses">
+            <set>
+                <value>New York</value>
+                <value>California</value>
+                <value>Texas</value>
+                <value>New York</value> <!-- Duplicate will be ignored in Set -->
+            </set>
+        </property>
+        
+        <!-- Map injection -->
+        <property name="courses">
+            <map>
+                <entry key="Java" value="3 Months"/>
+                <entry key="Python" value="2 Months"/>
+                <entry key="JavaScript" value="1 Month"/>
+                <entry key="Spring" value="2 Months"/>
+            </map>
+        </property>
+        
+        <!-- Properties injection -->
+        <property name="props">
+            <props>
+                <prop key="username">admin</prop>
+                <prop key="password">admin123</prop>
+                <prop key="driver">com.mysql.jdbc.Driver</prop>
+            </props>
+        </property>
+        
+    </bean>
+
+</beans>
