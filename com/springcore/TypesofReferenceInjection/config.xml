@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:c="http://www.springframework.org/schema/c"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Referenced beans -->
+    <bean class="com.springcore.ref.B" name="bref" p:y="100"/>
+    <bean class="com.springcore.ref.B" name="bref2" p:y="200"/>
+
+    <!-- SETTER INJECTION METHODS -->
+    
+    <!-- 1. ref as ELEMENT -->
+    <bean class="com.springcore.ref.A" name="setter_element">
+        <property name="x" value="10"/>
+        <property name="objB">
+            <ref bean="bref"/>
+        </property>
+    </bean>
+    
+    <!-- 2. ref as ATTRIBUTE -->
+    <bean class="com.springcore.ref.A" name="setter_attribute">
+        <property name="x" value="20"/>
+        <property name="objB" ref="bref2"/>
+    </bean>
+    
+    <!-- 3. P-SCHEMA -->
+    <bean class="com.springcore.ref.A" name="setter_p_schema" 
+          p:x="30" 
+          p:objB-ref="bref"/>
+
+    <!-- CONSTRUCTOR INJECTION METHODS -->
+    
+    <!-- 1. Constructor ref as ELEMENT -->
+    <bean class="com.springcore.ref.A" name="constructor_element">
+        <constructor-arg value="40"/>
+        <constructor-arg>
+            <ref bean="bref"/>
+        </constructor-arg>
+    </bean>
+    
+    <!-- 2. Constructor ref as ATTRIBUTE -->
+    <bean class="com.springcore.ref.A" name="constructor_attribute">
+        <constructor-arg value="50"/>
+        <constructor-arg ref="bref2"/>
+    </bean>
+    
+    <!-- 3. C-SCHEMA (4th method) -->
+    <bean class="com.springcore.ref.A" name="constructor_c_schema" 
+          c:x="60" 
+          c:objB-ref="bref"/>
+
+</beans>
