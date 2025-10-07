@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Samosa beans with lifecycle methods -->
+    <bean class="com.springcore.SpringLifecycle.Samosa" 
+          name="samosa1" 
+          init-method="init" 
+          destroy-method="destroy">
+        <property name="price" value="20.5"/>
+    </bean>
+    
+    <bean class="com.springcore.SpringLifecycle.Samosa" 
+          name="samosa2" 
+          init-method="init" 
+          destroy-method="destroy">
+        <property name="price" value="15.0"/>
+    </bean>
+    
+    <!-- Pizza beans with different method names -->
+    <bean class="com.springcore.SpringLifecycle.Pizza" 
+          name="pizza1" 
+          init-method="startMaking" 
+          destroy-method="cleanUp">
+        <property name="size" value="Large"/>
+        <property name="price" value="299.99"/>
+    </bean>
+    
+    <bean class="com.springcore.SpringLifecycle.Pizza" 
+          name="pizza2" 
+          init-method="startMaking" 
+          destroy-method="cleanUp">
+        <property name="size" value="Medium"/>
+        <property name="price" value="199.99"/>
+    </bean>
+
+</beans>
