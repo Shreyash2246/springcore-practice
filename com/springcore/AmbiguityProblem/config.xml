@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Certificate bean -->
+    <bean class="com.springcore.AmbiguityProblem.Certi" name="javaCerti">
+        <property name="name" value="Java SE 8 Certificate"/>
+    </bean>
+    
+    <bean class="com.springcore.AmbiguityProblem.Certi" name="springCerti">
+        <property name="name" value="Spring Framework Certificate"/>
+    </bean>
+
+    <!-- AMBIGUOUS CASE - This may cause issues -->
+    <bean class="com.springcore.AmbiguityProblem.Person" name="ambiguousPerson">
+        <constructor-arg value="John Doe"/>
+        <constructor-arg value="EMP001"/>
+        <!-- Spring might not know which constructor to use -->
+    </bean>
+
+    <!-- SOLUTION 1: Using type attribute -->
+    <bean class="com.springcore.AmbiguityProblem.Person" name="personWithType">
+        <constructor-arg value="Jane Smith" type="String"/>
+        <constructor-arg ref="javaCerti" type="com.springcore.AmbiguityProblem.Certi"/>
+    </bean>
+
+    <!-- SOLUTION 2: Using index attribute -->
+    <bean class="com.springcore.AmbiguityProblem.Person" name="personWithIndex">
+        <constructor-arg value="Mike Johnson" index="0"/>
+        <constructor-arg value="EMP002" index="1"/>
+    </bean>
+
+    <!-- SOLUTION 3: Using name attribute -->
+    <bean class="com.springcore.AmbiguityProblem.Person" name="personWithName">
+        <constructor-arg value="Sarah Wilson" name="name"/>
+        <constructor-arg value="EMP003" name="personId"/>
+    </bean>
+
+    <!-- SOLUTION 4: Combined approach -->
+    <bean class="com.springcore.AmbiguityProblem.Person" name="personCombined">
+        <constructor-arg value="Tom Brown" type="String" index="0"/>
+        <constructor-arg ref="springCerti" type="com.springcore.AmbiguityProblem.Certi" index="1"/>
+    </bean>
+
+</beans>
